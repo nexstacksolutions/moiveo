@@ -15,6 +15,10 @@
 
   & nav {
     gap: var(--spacing-md);
+
+    & .navLinkActive {
+      color: white;
+    }
   }
 
   & .actionBox {

@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { navigation } from "../../constant/navigation";
 import MobileNavigation from "./mobileNav/mobileNav";
@@ -30,9 +30,15 @@ function Header() {
       </Link>
       <nav className="row">
         {navigation.map((nav, index) => (
-          <Link key={nav.label + "header" + index} to={nav.href}>
+          <NavLink
+            key={nav.label + "header" + index}
+            to={nav.href}
+            className={({ isActive }) =>
+              `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`
+            }
+          >
             {nav.label}
-          </Link>
+          </NavLink>
         ))}
       </nav>
       <MobileNavigation />
