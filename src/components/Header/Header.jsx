@@ -2,7 +2,7 @@ import styles from "./Header.module.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { navigation } from "../../constant/navigation";
-import MobileNavigation from "./mobileNav/mobileNav";
+import MobileNavigation from "./mobileNav/MobileNav.module";
 import { useMedia } from "../../context/MediaContext";
 import { useState, useEffect } from "react";
 import { debounce } from "lodash"; // Install lodash library

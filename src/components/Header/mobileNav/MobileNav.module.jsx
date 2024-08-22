@@ -1,6 +1,6 @@
+import styles from "./MobileNav.module.css";
 import { mobileNavigation } from "../../../constant/navigation";
 import { NavLink } from "react-router-dom";
-import styles from "./MobileNav.module.css";
 
 function MobileNavigation() {
   return (
