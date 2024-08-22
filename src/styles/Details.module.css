@@ -1,0 +1,135 @@
+.detailsPage {
+  width: 100%;
+
+  & .banner {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    & .bannerOverlay {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, #171717, transparent);
+    }
+  }
+
+  & .container {
+    width: 100%;
+    align-items: start;
+    gap: var(--spacing-lg);
+    overflow: visible;
+
+    & .posterContainer {
+      min-width: 25rem;
+      transform: translateY(-12rem);
+
+      & img {
+        width: 100%;
+        height: 34rem;
+        object-fit: cover;
+        border-radius: var(--spacing-sm);
+      }
+
+      & .playButton {
+        width: 100%;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    & .detailsContent {
+      padding: var(--spacing-sm) var(--spacing-lg);
+
+      & .stats {
+        gap: var(--spacing-md);
+      }
+
+      & .overview .additionalInfo {
+        gap: var(--spacing-md);
+
+        & p {
+          gap: var(--spacing-sm);
+        }
+      }
+
+      & .crew p {
+        gap: var(--spacing-sm);
+      }
+
+      & .castGrid {
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-md);
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        & div {
+          width: 100%;
+          max-width: 96px;
+          text-align: center;
+
+          & .castImage {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+
+          & .castName {
+            font-size: var(--font-size-sm);
+            color: var(--secondary-text-color);
+            font-weight: var(--font-weight-bold);
+          }
+        }
+      }
+    }
+  }
+
+  & .relatedShowCase {
+    width: 100%;
+    gap: var(--spacing-lg);
+  }
+}
+
+/* Media query for screens with width less than 768px */
+@media (max-width: 768px) {
+  .detailsPage {
+    width: 100%;
+
+    & .container {
+      flex-direction: column;
+
+      & .posterContainer {
+        margin: 0 auto;
+      }
+
+      & .detailsContent .castGrid {
+        gap: var(--spacing-lg);
+
+        & div {
+          max-width: 90px;
+        }
+      }
+    }
+  }
+}
+
+/* Media query for screens with width less than 768px */
+@media (max-width: 520px) {
+  .detailsPage {
+    width: 100%;
+
+    & .container .detailsContent .castGrid div {
+      max-width: 80px;
+    }
+  }
+}

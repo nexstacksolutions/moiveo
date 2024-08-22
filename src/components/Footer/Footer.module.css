@@ -1,0 +1,15 @@
+.footer {
+  width: 100%;
+  text-align: center;
+  background-color: var(--footer-bg-color);
+  padding: var(--spacing-sm) var(--spacing-md);
+
+  & nav {
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+
+  & p {
+    margin: 0;
+  }
+}

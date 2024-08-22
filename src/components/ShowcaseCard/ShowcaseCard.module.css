@@ -1,0 +1,108 @@
+.showcaseCard {
+  min-width: 226px;
+  width: 100%;
+  max-width: 226px;
+  height: 32rem;
+  overflow: hidden;
+  border-radius: var(--border-radius-sm);
+  position: relative;
+  transition: transform 0.3s;
+  cursor: pointer;
+  align-items: start;
+
+  & .cardImage {
+    width: 100%;
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  .cardLabel {
+    position: absolute;
+    top: var(--spacing-md);
+    left: 0;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: var(--card-bg-color);
+    border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+    backdrop-filter: blur(3.5rem);
+  }
+
+  & .cardContent {
+    width: 100%;
+    position: absolute;
+    height: 6.4rem;
+    backdrop-filter: blur(6.4rem);
+    bottom: 0;
+    left: 0;
+    padding: var(--spacing-sm);
+    text-align: start;
+    background-color: var(--card-bg-color);
+    gap: var(--spacing-xs);
+
+    & h3,
+    span {
+      margin: 0;
+    }
+
+    & .cardTitle {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: -webkit-box;
+      line-clamp: 1;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      color: var(--primary-text-color);
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+    }
+
+    & span {
+      font-size: var(--font-size-sm);
+    }
+
+    & .cardMeta {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+}
+
+/* Apply the zoom effect when hovering over the card */
+.showcaseCard:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Media query for screens with width less than 1281px */
+@media (max-width: 1281px) {
+  .showcaseCard.explore {
+    max-width: 23%;
+  }
+}
+
+/* Media query for screens with width less than 1024px */
+@media (max-width: 1024px) {
+  .showcaseCard.explore {
+    max-width: 30%;
+  }
+}
+
+/* Media query for screens with width less than 768px */
+@media (max-width: 768px) {
+  .showcaseCard.explore {
+    max-width: 48%;
+  }
+}
+
+/* Media query for screens with width less than 480px */
+@media (max-width: 502px) {
+  .showcaseCard.explore {
+    max-width: 100%;
+    min-height: 32rem;
+    height: 90vh;
+  }
+}

@@ -1,0 +1,15 @@
+.progressBarWrapper {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background-color: var(--sub-heading-color);
+  z-index: 399;
+  overflow: hidden;
+
+  & .progressBar {
+    height: 100%;
+    background-color: cadetblue;
+  }
+}

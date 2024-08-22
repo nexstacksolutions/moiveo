@@ -1,0 +1,47 @@
+.showcaseGrid {
+  position: relative;
+  width: 100%;
+  gap: var(--spacing-md);
+  overflow: hidden;
+
+  & .sectionHeader {
+    width: 100%;
+  }
+
+  & .sectionContent {
+    width: 100%;
+    gap: 2%;
+    row-gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+    scroll-behavior: smooth;
+    overflow: hidden;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &:hover button {
+    opacity: 1;
+  }
+}
+
+.explore {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Media query for screens with width less than 480px */
+@media (max-width: 480px) {
+  .explore {
+    justify-content: center;
+  }
+}
+
+/* Media query for screens with width less than 480px */
+@media (max-width: 650px) {
+  .showcaseGrid .sectionContent {
+    gap: 3%;
+  }
+}

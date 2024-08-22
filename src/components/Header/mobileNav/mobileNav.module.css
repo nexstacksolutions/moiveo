@@ -1,0 +1,47 @@
+.mobileNavigation {
+  width: 100%;
+  min-height: 6rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 90;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--mobile-nav-bg-color);
+  backdrop-filter: blur(16px);
+
+  & .navigationContainer {
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+
+    & .navLink {
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      color: inherit;
+
+      & .icon {
+        justify-content: center;
+
+        & svg {
+          font-size: 2.4rem;
+        }
+      }
+
+      & .label {
+        font-size: var(----font-size-sm);
+      }
+    }
+
+    & .navLinkActive {
+      color: white;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .mobileNavigation {
+    display: none;
+  }
+}

@@ -1,0 +1,69 @@
+/* searchGuide.module.css */
+.searchGuide {
+  max-width: 1280px;
+  text-align: left;
+  padding: var(--spacing-lg);
+  background-color: var(--secondary-bg-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  color: var(--primary-text-color);
+
+  & .title {
+    font-size: 3rem; /* Adapt based on the global h1 style */
+    margin-bottom: var(--spacing-md);
+  }
+
+  & .subtitle {
+    margin-bottom: var(--spacing-lg);
+    color: var(--secondary-text-color);
+  }
+
+  & .section {
+    margin-bottom: var(--spacing-lg);
+
+    & h2 {
+      font-size: 2rem; /* Adapt based on the global h2 style */
+      margin-bottom: var(--spacing-md);
+    }
+
+    & p {
+      margin-bottom: var(--spacing-md);
+    }
+
+    & .categoryList {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: var(--spacing-md);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+
+      & li {
+        background-color: var(--card-bg-color);
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: var(--border-radius-sm);
+        font-size: var(--font-size-base);
+        color: var(--primary-text-color);
+        box-shadow: var(--shadow-sm);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .searchGuide {
+    padding: var(--spacing-lg); /* Reduce padding */
+
+    & .title {
+      font-size: 2.4rem; /* Adjust font size */
+    }
+
+    & .subtitle {
+      font-size: 1.4rem; /* Adjust font size */
+    }
+
+    & .section h2 {
+      font-size: 1.8rem; /* Adjust font size */
+    }
+  }
+}
