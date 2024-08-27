@@ -34,6 +34,7 @@ function ShowcaseCard({
             mediaData.poster_path || "default-poster.jpg"
           }`}
           alt={mediaData.title || mediaData.name || "No Title"}
+          decoding="async"
         />
       </div>
 

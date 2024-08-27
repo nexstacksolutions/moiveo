@@ -26,7 +26,7 @@ function Header() {
   return (
     <header className={`${styles.header} row`}>
       <Link to={"/"} className={styles.logo}>
-        <img src="/logo.png" alt="Logo" />
+        <img src="/logo.png" alt="Logo" decoding="async" />
       </Link>
       <nav className="row">
         {navigation.map((nav, index) => (

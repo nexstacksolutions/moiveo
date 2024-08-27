@@ -34,6 +34,7 @@ function FeatureBanner({ bannerData, IMAGE_BASE_URL, currentBanner }) {
       <img
         src={`${IMAGE_BASE_URL}${bannerData.backdrop_path || "default.jpg"}`}
         alt={bannerData.title || "No Title"}
+        decoding="async"
       />
 
       <div className={styles.gradientOverlay}></div>
