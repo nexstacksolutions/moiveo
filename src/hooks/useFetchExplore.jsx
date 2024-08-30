@@ -6,7 +6,6 @@ function useFetchExplore(explore) {
   const [pageNo, setPageNo] = useState(1);
   const [totalPageNo, setTotalPageNo] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const fetchData = useCallback(async () => {
     if (pageNo === 1) {
@@ -22,7 +21,7 @@ function useFetchExplore(explore) {
       setMediaList((prev) => [...prev, ...(response.data.results || [])]);
       setTotalPageNo(response.data.total_pages);
     } catch (error) {
-      setError(error);
+      throw (new Error("Failed to load data."), error);
     } finally {
       setLoading(false);
     }
@@ -52,7 +51,7 @@ function useFetchExplore(explore) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  return { mediaList, loading, error };
+  return { mediaList, loading };
 }
 
 export default useFetchExplore;

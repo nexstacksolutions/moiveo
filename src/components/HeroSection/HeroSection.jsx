@@ -14,11 +14,7 @@ function BannerInfo({ bannerData }) {
         <span>|</span>
         <span>View : {bannerData.vote_count}</span>
       </div>
-      <Link
-        to={`/${
-          bannerData.media_type === "movie" ? "movies" : bannerData.media_type
-        }/${bannerData.id}`}
-      >
+      <Link to={`/${bannerData.media_type}/${bannerData.id}`}>
         <button className="btn">Play Now</button>
       </Link>
     </div>

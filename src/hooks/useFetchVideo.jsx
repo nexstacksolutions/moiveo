@@ -3,20 +3,16 @@ import axios from "axios";
 
 function useFetchVideo(endpoint) {
   const [mediaList, setMediaList] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const fetchVideo = useCallback(async (endpoint) => {
-    setLoading(true);
-    setError(null);
     try {
+      console.log(endpoint);
       const response = await axios.get(endpoint);
+      console.log(response);
 
       setMediaList(response.data);
     } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
+      throw (new Error("Failed to load video data."), error);
     }
   }, []);
 
@@ -24,7 +20,7 @@ function useFetchVideo(endpoint) {
     fetchVideo(endpoint);
   }, [fetchVideo, endpoint]);
 
-  return { mediaList, loading, error };
+  return mediaList;
 }
 
 export default useFetchVideo;

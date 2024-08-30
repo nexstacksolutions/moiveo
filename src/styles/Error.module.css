@@ -6,34 +6,36 @@
   background-color: var(--main-bg-color);
   text-align: center;
   padding: var(--spacing-lg);
-}
 
-.errorContent {
-  max-width: 600px;
-  background-color: var(--secondary-bg-color);
-  border-radius: var(--border-radius-md);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow-lg);
-}
+  & .errorContent {
+    max-width: 600px;
+    background-color: var(--secondary-bg-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-lg);
+  }
 
-.errorTitle {
-  font-size: 3.6rem;
-  color: var(--heading-color);
-  margin-bottom: var(--spacing-md);
-}
+  & .errorTitle {
+    margin-bottom: var(--spacing-md);
+  }
 
-.errorMessage {
-  font-size: var(--font-size-lg);
-  color: var(--primary-text-color);
-  margin-bottom: var(--spacing-lg);
-}
+  & .errorMessage:last-child {
+    padding: 0 var(--spacing-md);
+  }
 
-.homeLink {
-  font-size: var(--font-size-base);
-  color: var(--btn-color);
-  text-decoration: underline;
-}
+  & .actionBtns {
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
 
-.homeLink:hover {
-  color: var(--btn-hover-color);
+    & button {
+      font-size: var(--font-size-base);
+      color: var(--btn-color);
+      text-decoration: underline;
+
+      &:hover {
+        color: var(--btn-hover-color);
+      }
+    }
+  }
 }

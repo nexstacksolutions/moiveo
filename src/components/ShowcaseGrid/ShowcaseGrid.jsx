@@ -66,6 +66,8 @@ function ShowcaseGrid({ mediaList, showcaseName, mediaType }) {
   const memoizedMediaList = useMemo(() => mediaList, [mediaList]);
   const memoizedMediaType = useMemo(() => mediaType, [mediaType]);
 
+  if (!memoizedMediaList.length) return null;
+
   return (
     <section className={`${styles.showcaseGrid} col container`}>
       <SectionHeader showcaseName={memoizedShowcaseName} />

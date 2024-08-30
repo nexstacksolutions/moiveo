@@ -3,8 +3,8 @@ import { IoClose } from "react-icons/io5";
 import useFetchVideo from "../../hooks/useFetchVideo";
 import styles from "./VideoPlay.module.css"; // Import module CSS
 
-const VideoPlay = ({ data, close, mediaType }) => {
-  const { mediaList } = useFetchVideo(`/${mediaType}/${data}/videos`);
+const VideoPlay = ({ videoId, closeVideo, mediaType }) => {
+  const mediaList = useFetchVideo(`/${mediaType}/${videoId}/videos`);
   const videoContainerRef = useRef(null);
 
   // Function to handle click outside of video container
@@ -14,16 +14,16 @@ const VideoPlay = ({ data, close, mediaType }) => {
         videoContainerRef.current &&
         !videoContainerRef.current.contains(event.target)
       ) {
-        close();
+        closeVideo();
       }
     },
-    [close]
+    [closeVideo]
   );
 
   return (
     <section onClick={handleClickOutside} className={styles.overlay}>
       <div className={styles.videoContainer} ref={videoContainerRef}>
-        <button onClick={close} className={styles.closeButton}>
+        <button onClick={closeVideo} className={styles.closeButton}>
           <IoClose />
         </button>
         <iframe

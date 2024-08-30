@@ -21,10 +21,7 @@ function ShowcaseCard({
 
   return (
     <Link
-      to={`/${
-        mediaType ||
-        `${mediaData.media_type === "movie" ? "movies" : mediaData.media_type}`
-      }/${mediaData.id}`}
+      to={`/${mediaType}/${mediaData.id}`}
       className={`${styles.showcaseCard} ${explorePage && styles.explore}`}
       style={{ transform: `translateX(-${currentCard * 100}%)` }}
     >
