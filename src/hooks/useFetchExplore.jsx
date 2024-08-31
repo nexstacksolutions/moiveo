@@ -1,16 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
-function useFetchExplore(explore) {
-  const [mediaList, setMediaList] = useState([]);
-  const [pageNo, setPageNo] = useState(1);
-  const [totalPageNo, setTotalPageNo] = useState(0);
-  const [loading, setLoading] = useState(false);
+function useFetchExplore(explore, initialData) {
+  const [mediaList, setMediaList] = useState(initialData?.mediaList || []);
+  const [pageNo, setPageNo] = useState(2);
+  const [totalPageNo, setTotalPageNo] = useState(initialData?.totalPageNo || 0);
 
   const fetchData = useCallback(async () => {
-    if (pageNo === 1) {
-      setLoading(true);
-    }
+    if (pageNo > totalPageNo) return;
 
     try {
       const endpoint = explore === "tv" ? "/discover/tv" : "/discover/movie";
@@ -19,31 +16,17 @@ function useFetchExplore(explore) {
       });
 
       setMediaList((prev) => [...prev, ...(response.data.results || [])]);
+      setPageNo((prev) => prev + 1);
       setTotalPageNo(response.data.total_pages);
     } catch (error) {
-      throw (new Error("Failed to load data."), error);
-    } finally {
-      setLoading(false);
+      console.error("Failed to load data.", error);
     }
-  }, [explore, pageNo]);
+  }, [explore, pageNo, totalPageNo]);
 
   const handleScroll = useCallback(() => {
-    if (
-      !loading &&
-      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
-      pageNo < totalPageNo
-    ) {
-      setPageNo((prev) => prev + 1);
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      fetchData();
     }
-  }, [loading, pageNo, totalPageNo]);
-
-  useEffect(() => {
-    setPageNo(1);
-    setMediaList([]);
-  }, [explore]);
-
-  useEffect(() => {
-    fetchData();
   }, [fetchData]);
 
   useEffect(() => {
@@ -51,7 +34,7 @@ function useFetchExplore(explore) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  return { mediaList, loading };
+  return { mediaList };
 }
 
 export default useFetchExplore;

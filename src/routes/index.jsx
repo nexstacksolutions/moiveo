@@ -1,8 +1,15 @@
 import App from "../App";
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
+
+// loaders
 import useFetchHome from "../hooks/useFetchHome";
 import useFetchDetails from "../hooks/useFetchDetails";
+import exploreLoader from "../hooks/loaders/exploreLoader";
+import searchLoader from "../hooks/loaders/searchLoader";
+
+// actions
+import searchAction from "../hooks/actions/searchAction";
 
 // All pages
 const Home = lazy(() => import("../pages/Home"));
@@ -19,13 +26,18 @@ const router = createBrowserRouter([
     errorElement: <ErrorBoundary />,
     children: [
       { path: "/", element: <Home />, loader: useFetchHome },
-      { path: "/:explore", element: <ExplorePage /> },
+      { path: "/:explore", element: <ExplorePage />, loader: exploreLoader },
       {
         path: "/:explore/:id",
         element: <DetailsPage />,
         loader: useFetchDetails,
       },
-      { path: "/search", element: <SearchPage /> },
+      {
+        path: "/search",
+        element: <SearchPage />,
+        loader: searchLoader,
+        action: searchAction,
+      },
     ],
   },
 ]);

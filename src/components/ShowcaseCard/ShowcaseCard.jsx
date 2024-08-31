@@ -8,7 +8,6 @@ function ShowcaseCard({
   mediaData,
   showcaseName,
   index,
-  currentCard,
   mediaType,
   explorePage,
 }) {
@@ -23,7 +22,6 @@ function ShowcaseCard({
     <Link
       to={`/${mediaType}/${mediaData.id}`}
       className={`${styles.showcaseCard} ${explorePage && styles.explore}`}
-      style={{ transform: `translateX(-${currentCard * 100}%)` }}
     >
       <div className={styles.cardImage}>
         <img

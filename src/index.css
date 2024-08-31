@@ -108,11 +108,6 @@ p {
   line-height: var(--line-height-lg);
 }
 
-ul,
-ol {
-  padding-left: var(--spacing-lg);
-}
-
 li {
   display: flex;
   justify-content: center;
@@ -175,12 +170,10 @@ textarea {
   border-radius: var(--border-radius-sm);
   background-color: var(--secondary-bg-color);
   color: var(--primary-text-color);
-  margin-bottom: var(--spacing-md);
 }
 
 label {
   display: block;
-  margin-bottom: var(--spacing-xs);
   font-weight: var(--font-weight-bold);
 }
 
@@ -244,49 +237,4 @@ main {
   .grid-2 {
     grid-template-columns: 1fr;
   }
-}
-
-/* Additional Utility Classes */
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.mt-xs {
-  margin-top: var(--spacing-xs);
-}
-
-.mt-sm {
-  margin-top: var(--spacing-sm);
-}
-
-.mt-md {
-  margin-top: var(--spacing-md);
-}
-
-.mt-lg {
-  margin-top: var(--spacing-lg);
-}
-
-.mb-xs {
-  margin-bottom: var(--spacing-xs);
-}
-
-.mb-sm {
-  margin-bottom: var(--spacing-sm);
-}
-
-.mb-md {
-  margin-bottom: var(--spacing-md);
-}
-
-.mb-lg {
-  margin-bottom: var(--spacing-lg);
 }

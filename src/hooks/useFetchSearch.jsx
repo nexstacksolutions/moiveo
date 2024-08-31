@@ -1,18 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
-function useFetchSearch(query) {
-  const [searchResults, setSearchResults] = useState([]);
-  const [pageNo, setPageNo] = useState(1);
-  const [totalPageNo, setTotalPageNo] = useState(0);
-  const [loading, setLoading] = useState(false);
+function useFetchSearch(query, initialData) {
+  const [searchResults, setSearchResults] = useState(
+    initialData?.results || []
+  );
+  const [pageNo, setPageNo] = useState(2);
+  const [totalPageNo, setTotalPageNo] = useState(initialData?.totalPageNo || 0);
 
   const fetchSearchResults = useCallback(async () => {
-    if (!query.trim()) return; // Don't fetch if input is empty
-
-    if (pageNo === 1) {
-      setLoading(true);
-    }
+    if (!query.trim() || pageNo > totalPageNo) return;
 
     try {
       const { data } = await axios.get(`/search/multi?include_adult=false`, {
@@ -23,33 +20,18 @@ function useFetchSearch(query) {
         },
       });
 
-      setSearchResults((prev) => [...prev, ...data.results]); // Append new results
-      setTotalPageNo(data.total_pages); // Update the total number of pages
+      setSearchResults((prev) => [...prev, ...data.results]);
+      setPageNo((prev) => prev + 1);
+      setTotalPageNo(data.total_pages);
     } catch (error) {
       console.error("Error fetching search results:", error);
-      throw (new Error("Failed to load search results."), error);
-    } finally {
-      setLoading(false);
     }
-  }, [query, pageNo]);
+  }, [query, pageNo, totalPageNo]);
 
   const handleScroll = useCallback(() => {
-    if (
-      !loading &&
-      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
-      pageNo < totalPageNo // Check if there are more pages to load
-    ) {
-      setPageNo((prev) => prev + 1);
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      fetchSearchResults();
     }
-  }, [loading, pageNo, totalPageNo]);
-
-  useEffect(() => {
-    setPageNo(1);
-    setSearchResults([]);
-  }, [query]);
-
-  useEffect(() => {
-    fetchSearchResults();
   }, [fetchSearchResults]);
 
   useEffect(() => {
@@ -57,7 +39,7 @@ function useFetchSearch(query) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  return { searchResults, loading };
+  return { searchResults };
 }
 
 export default useFetchSearch;

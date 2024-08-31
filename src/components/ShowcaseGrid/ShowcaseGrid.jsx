@@ -1,7 +1,7 @@
 import styles from "./ShowcaseGrid.module.css";
 import ShowcaseCard from "../ShowcaseCard/ShowcaseCard";
 import NavBtns from "../NavBtns/NavBtns";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { memo } from "react";
 
@@ -16,19 +16,19 @@ const SectionHeader = memo(({ showcaseName }) => {
 SectionHeader.displayName = "SectionHeader";
 
 const SectionContent = memo(({ mediaList, showcaseName, mediaType }) => {
-  const [currentCard, setCurrentCard] = useState(0);
   const { explore, id } = useParams();
   const location = useLocation();
   const containerRef = useRef(null);
 
   const explorePage = explore || location.pathname === "/search" || id;
 
-  const handleNext = useCallback(() => {
-    containerRef.current.scrollLeft += 226;
-  }, []);
+  const handleScroll = useCallback((direction) => {
+    const container = containerRef.current;
+    const cardWidth = container.children[0].clientWidth;
 
-  const handlePrev = useCallback(() => {
-    containerRef.current.scrollLeft -= 226;
+    direction === "next"
+      ? (container.scrollLeft += cardWidth)
+      : (container.scrollLeft -= cardWidth);
   }, []);
 
   return (
@@ -45,16 +45,18 @@ const SectionContent = memo(({ mediaList, showcaseName, mediaType }) => {
             index={index + 1}
             key={item.id}
             mediaData={item}
-            currentCard={currentCard}
             mediaType={mediaType}
             explorePage={explorePage && !id}
           />
         ))}
       </div>
 
-      {!explorePage || id ? (
-        <NavBtns handleNext={handleNext} handlePrev={handlePrev} />
-      ) : null}
+      {(!explorePage || id) && (
+        <NavBtns
+          handleNext={() => handleScroll("next")}
+          handlePrev={() => handleScroll("prev")}
+        />
+      )}
     </>
   );
 });

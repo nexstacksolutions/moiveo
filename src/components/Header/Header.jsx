@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Form, Link, NavLink, useNavigate } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { navigation } from "../../constant/navigation";
 import MobileNavigation from "./mobileNav/MobileNav";
@@ -43,7 +43,7 @@ function Header() {
       </nav>
       <MobileNavigation />
       <div className={`${styles.actionBox} row`}>
-        <form
+        <Form
           onSubmit={(e) => handleSearch(e, query, navigate)}
           className={`${styles.searchBar} row`}
         >
@@ -54,7 +54,7 @@ function Header() {
             onChange={(e) => setQuery(e.target.value)}
           />
           <IoSearchOutline />
-        </form>
+        </Form>
         <div className={styles.users}>
           <img src="/user.png" alt="User" />
         </div>

@@ -14,8 +14,8 @@
     row-gap: var(--spacing-lg);
     padding: var(--spacing-md);
     scroll-behavior: smooth;
-    overflow: hidden;
-    overflow-x: scroll;
+    overflow-y: hidden;
+    overflow-x: auto;
 
     &::-webkit-scrollbar {
       display: none;

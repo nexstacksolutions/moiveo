@@ -1,8 +1,8 @@
 import axios from "axios";
 
-async function useFetchDetails(request) {
+async function useFetchDetails({ params }) {
   try {
-    const { explore, id } = request.params;
+    const { explore, id } = params;
 
     const [
       detailsResponse,

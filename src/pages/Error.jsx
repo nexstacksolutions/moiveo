@@ -3,6 +3,7 @@ import { Link, useNavigate, useRouteError } from "react-router-dom";
 
 function ErrorBoundary({ errorMsg }) {
   const error = useRouteError();
+
   const navigate = useNavigate();
 
   const handleGoBack = () => {
